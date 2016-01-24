@@ -1,0 +1,16 @@
+*.py[co]
+*.sw[nop]
+*~
+.project
+.settings
+TAGS
+bower_components
+coverage
+node_modules
+npm-debug.log
+reports
+web-payments.dev-error.log
+web-payments.dev-app.log
+web-payments.dev-access.log
+web-payments.dev-access1.log
+bedrock

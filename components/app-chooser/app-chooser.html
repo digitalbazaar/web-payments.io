@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <br-headline
+      br-title="{{'Select a Payment App'}}"
+      br-loading="ctrl.loading" br-options="{menu:false}"></br-headline>
+    <hr/>
+    <ul ng-hide="ctrl.loading" class="list-unstyled">
+      <li class="br-item-hover well" ng-repeat="(id, manifest) in ctrl.apps"
+        ng-click="ctrl.select(manifest)">
+        <div>
+          <i class="col-sm-offset-1 fa fa-user fa-2x"></i>
+          <span class="col-sm-offset-2"><strong>{{manifest.name}}</strong></span>
+        </div>
+      </li>
+    </ul>
+    <div ng-if="!ctrl.loading">
+      <div ng-if="ctrl.apps | isEmpty">
+        <div class="alert alert-warning"><strong>No apps found</strong>.</div>
+        <p>
+          Please register a payment app with this device.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

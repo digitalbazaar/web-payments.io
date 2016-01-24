@@ -1,0 +1,28 @@
+<div class="ng-cloak" ng-controller="fpPaymentRequestController as model">
+
+  <div ng-if="model.loading">
+    <span>
+      <i class="fa fa-refresh fa-spin text-muted"></i>
+    </span>
+  </div>
+
+  <div ng-if="!model.loading">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="headline">FirstPay Payment App</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <p>Please click "Pay" to complete your payment.</p>
+
+      <!-- TODO: collect payment instrument details -->
+
+      <pre>{{model.request|json}}</pre>
+
+      <button ng-click="model.pay(model.instrument)" type="button"
+        class="btn btn-primary">Pay</button>
+    </div>
+  </div>
+
+</div>

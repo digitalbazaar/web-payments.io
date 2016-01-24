@@ -1,0 +1,23 @@
+<div class="ng-cloak" ng-controller="wpioRegisterAppController as model">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="headline">Payment App Registration</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p>The origin <strong>{{model.origin}}</strong> has requested that you
+        register a payment application.</p>
+
+      <pre>{{model.app|json}}</pre>
+
+      <button ng-click="model.register()" type="button"
+        class="btn btn-primary">Register</button>
+      <button ng-click="model.cancel()" type="button"
+        class="btn btn-primary">Cancel</button>
+    </div>
+  </div>
+
+</div>

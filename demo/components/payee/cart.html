@@ -1,0 +1,31 @@
+<div class="ng-cloak" ng-controller="pCartController as model">
+
+  <div ng-if="model.view === 'request'">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="headline">Payee: Request Payment</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <p>This is a payee website that is requesting payment.</p>
+      <button ng-click="model.request()" type="button"
+        class="btn btn-primary">Pay</button>
+    </div>
+  </div>
+
+  <div ng-if="model.view === 'acknowledgement'">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="headline">Payee: Payment Acknowledged</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <p>This is the payment acknowledgement sent this payee:</p>
+      <pre class="pre-scrollable">{{model.acknowledgement | json}}</pre>
+      <button ng-click="model.home()" type="button"
+        class="btn btn-primary">Back to demo page</button>
+    </div>
+  </div>
+</div>

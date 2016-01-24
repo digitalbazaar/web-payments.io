@@ -1,0 +1,30 @@
+<div class="ng-cloak" ng-controller="npRegisterController as model">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="headline">NextPay Registration</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <p>This page demonstrates payment application registration.</p>
+
+    <p>Clicking the button below will request installation of this payment
+      application, NextPay, in your browser. Once a payment application has
+      been installed, it will be available for use when you visit a website
+      that requests a payment using one of its supported payment methods.</p>
+  </div>
+
+  <hr/>
+
+  <div class="row">
+    <div class="col-md-offset-3">
+      <button type="button" ng-disabled="model.loading"
+        class="btn btn-primary btn-lg"
+        ng-click="model.register()">Register</button>
+      <span ng-show="model.loading">
+        <i class="fa fa-refresh fa-spin fa-lg"></i>
+      </span>
+    </div>
+  </div>
+</div>
