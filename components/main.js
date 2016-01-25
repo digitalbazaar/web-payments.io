@@ -1,8 +1,7 @@
 define([
   'angular',
-  './agent/main',
   './payment-mediator/main',
-  './app-chooser/main',
+  './app-chooser/app-chooser',
   './register-app/main'
 ], function(angular) {
 

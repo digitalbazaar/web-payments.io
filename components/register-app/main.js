@@ -9,7 +9,7 @@ define([
 
 var module = angular.module(
   'web-payments.io.registerApp',
-  ['web-payments.io.payment-mediator', 'bedrock.alert']);
+  ['web-payments.io.paymentMediator', 'bedrock.alert']);
 
 module.controller(registerAppController);
 
