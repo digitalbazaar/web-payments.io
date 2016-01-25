@@ -17,7 +17,8 @@ function factory($scope, $location, brAlertService) {
       id: url,
       type: 'PaymentApp',
       name: 'FirstPay',
-      image: url + '/app.png',
+      //image: url + '/app.png',
+      image: 'https://cdn.rawgit.com/google/material-design-icons/182053460b9e96cab11924c0b50dcb50dc8d5366/action/2x_web/ic_credit_card_black_48dp.png',
       url: url,
       supportedPaymentMethod: [
         'https://w3id.org/payment-methods#Visa',
