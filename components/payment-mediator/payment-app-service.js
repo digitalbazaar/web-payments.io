@@ -13,16 +13,14 @@ function factory() {
   /**
    * Installs a new payment app.
    *
-   * @param options the options to use:
-   *          app the payment app manifest.
+   * @param manifest the payment app's manifest.
    */
-  service.install = function(options) {
-    options = options || {};
-    // TODO: validate `options.app`
-    if(!options.app || typeof options.app !== 'object') {
-      throw new Error('options.app must be an object.');
+  service.install = function(manifest) {
+    // TODO: validate `manifest`
+    if(!manifest || typeof manifest !== 'object') {
+      throw new Error('manifest must be an object.');
     }
-    storage.insert(options.app);
+    storage.insert(manifest);
   };
 
   /**
@@ -58,16 +56,14 @@ function factory() {
   /**
    * Inserts an app manifest into storage.
    *
-   * @param options the options to use:
-   *          app the app manifest to insert.
+   * @param manifest the payment app's manifest.
    */
-  storage.insert = function(options) {
-    options = options || {};
-    if(!options.app || typeof options.app !== 'object') {
-      throw new Error('options.app must be a valid object.');
+  storage.insert = function(manifest) {
+    if(!manifest || typeof manifest !== 'object') {
+      throw new Error('manifest must be a valid object.');
     }
-    var manifests = storage.getAll(options);
-    manifests[options.app.id] = options.app;
+    var manifests = storage.getAll({});
+    manifests[manifest.id] = manifest;
     localStorage.setItem(STORAGE_KEYS.APPS, JSON.stringify(manifests));
   };
 
@@ -95,8 +91,7 @@ function factory() {
    */
   storage.getAll = function(options) {
     options = options || {};
-    var manifests;
-    localStorage.getItem(STORAGE_KEYS.APPS);
+    var manifests = localStorage.getItem(STORAGE_KEYS.APPS);
     if(manifests) {
       try {
         manifests = JSON.parse(manifests);

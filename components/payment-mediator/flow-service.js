@@ -207,7 +207,7 @@ function factory($window, wpioPaymentAppService) {
     router = new Router(options.route, rpMessage.origin);
 
     // flow complete, clear selected app
-    wpioPaymentAppService.clearApp();
+    service.clearApp();
 
     // route message
     router.send(message.op, message.data);

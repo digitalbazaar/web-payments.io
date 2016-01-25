@@ -10,15 +10,15 @@ function factory($scope, $location, brAlertService) {
   self.register = function() {
     self.loading = true;
     // remove trailing "/register"
-    var path = $location.path();
-    path = path.substr(0, path.length - '/register'.length);
+    var url = $location.absUrl();
+    url = url.substr(0, url.length - '/register'.length);
     navigator.payment.registerApp({
       '@context': 'https://w3id.org/web-payments/v1',
-      id: path,
+      id: url,
       type: 'PaymentApp',
       name: 'NextPay',
-      image: path + '/app.png',
-      url: path,
+      image: url + '/app.png',
+      url: url,
       supportedPaymentMethod: [
         'https://w3id.org/payment-methods#Visa',
         'https://w3id.org/payment-methods#MasterCard'

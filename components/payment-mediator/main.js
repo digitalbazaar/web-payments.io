@@ -21,8 +21,7 @@ module.config(function($routeProvider) {
   $routeProvider
     .when('/mediator', {
       title: 'Payment Request',
-      templateUrl: requirejs.toUrl(
-        'web-payments.io/payment-mediator/payment-request.html')
+      templateUrl: requirejs.toUrl('web-payments.io/payment-mediator/main.html')
     });
 });
 

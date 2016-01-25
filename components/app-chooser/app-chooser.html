@@ -8,7 +8,7 @@
       <li class="br-item-hover well" ng-repeat="(id, manifest) in ctrl.apps"
         ng-click="ctrl.select(manifest)">
         <div>
-          <i class="col-sm-offset-1 fa fa-user fa-2x"></i>
+          <img ng-src="{{manifest.image}}"></img>
           <span class="col-sm-offset-2"><strong>{{manifest.name}}</strong></span>
         </div>
       </li>

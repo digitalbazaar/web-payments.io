@@ -42,7 +42,7 @@ function factory(
       return wpioFlowService.getParameters(query)
         .then(function(params) {
           // get acceptable payment methods
-          var request = params.request;
+          var request = params.paymentRequest;
           var acceptable = jsonld.getValues(request, 'acceptablePayment');
           acceptable = _.map(acceptable, function(e) {
             return e.paymentMethod;
