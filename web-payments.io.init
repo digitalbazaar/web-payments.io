@@ -1,0 +1,56 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:             web-payments.io
+# Required-Start:       $all
+# Required-Stop:        $remote_fs $syslog
+# Default-Start:        2 3 4 5
+# Default-Stop:
+# Short-Description:    web-payments.io website
+### END INIT INFO
+
+set -e
+
+test -x /usr/bin/node || exit 0
+. /lib/lsb/init-functions
+
+PIDFILE=/var/run/webpayments.pid
+
+start() {
+  log_daemon_msg "Starting bedrock:" "web-payments.io" || true
+  if start-stop-daemon --start --quiet -d /home/webpayments/webpayments.io --oknodo --background --make-pidfile --pidfile $PIDFILE --exec /usr/bin/node -- /home/webpayments/webpayments.io/web-payments.io.js ; then
+    log_end_msg 0 || true
+  else
+    log_end_msg 1 || true
+  fi
+}
+
+stop() {
+  log_daemon_msg "Stopping bedrock:" "web-payments.io" || true
+  if start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE --retry TERM/3; then
+    log_end_msg 0 || true
+  else
+    log_end_msg 1 || true
+  fi
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    stop
+    start
+    ;;
+  status)
+    status_of_proc -p $PIDFILE /usr/bin/node && exit 0 || exit $?
+    ;;
+  *)
+    log_action_msg "Usage: /etc/init.d/web-payments.io {start|stop|restart|status}" || true
+    exit 1
+esac
+
+exit 0

@@ -21,8 +21,8 @@ config.core.starting.groupId = 'adm';
 config.core.starting.userId = 'root';
 
 // master and workers after starting
-config.core.running.groupId = 'wpio';
-config.core.running.userId = 'wpio';
+config.core.running.groupId = 'webpayments';
+config.core.running.userId = 'webpayments';
 
 // logging
 config.loggers.logdir = _logdir;
