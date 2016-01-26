@@ -18,7 +18,7 @@ PIDFILE=/var/run/webpayments.pid
 
 start() {
   log_daemon_msg "Starting bedrock:" "web-payments.io" || true
-  if start-stop-daemon --start --quiet -d /home/webpayments/webpayments.io --oknodo --background --make-pidfile --pidfile $PIDFILE --exec /usr/bin/node -- /home/webpayments/webpayments.io/web-payments.io.js ; then
+  if start-stop-daemon --start --quiet -d /home/webpayments/web-payments.io --oknodo --background --make-pidfile --pidfile $PIDFILE --exec /usr/bin/node -- /home/webpayments/web-payments.io/web-payments.io.js ; then
     log_end_msg 0 || true
   else
     log_end_msg 1 || true
