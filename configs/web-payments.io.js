@@ -40,9 +40,9 @@ config.server.bindAddr = ['web-payments.io'];
 config.server.domain = 'web-payments.io';
 config.server.host = 'web-payments.io';
 config.server.baseUri = 'https://' + config.server.host;
-config.server.key = path.join(_cfgdir, 'pki', 'web-payments.io.key');
-config.server.cert = path.join(_cfgdir, 'pki', 'web-payments.io.crt');
-config.server.ca = path.join(_cfgdir, 'pki', 'web-payments.io-bundle.crt');
+//config.server.key = path.join(_cfgdir, 'pki', 'web-payments.io.key');
+//config.server.cert = path.join(_cfgdir, 'pki', 'web-payments.io.crt');
+//config.server.ca = path.join(_cfgdir, 'pki', 'web-payments.io-bundle.crt');
 
 // session info
 config.express.session.key = 'web-payments.io.sid';
