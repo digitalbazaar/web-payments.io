@@ -1,6 +1,6 @@
 <div class="row" ng-controller="wpioPaymentMediatorController as model">
   <wpio-app-chooser ng-if="model.display.appChooser"
-    wpio-app-chooser-apps="model.manifests"
+    wpio-app-chooser-options="model.chooserOptions"
     wpio-app-chooser-callback="model.complete(err, app)">
   </wpio-app-chooser>
   <div ng-if="model.display.redirectOrigin">

@@ -7,7 +7,7 @@ function factory(
   $location, $scope,
   wpioPaymentAppService, wpioFlowService, brAlertService) {
   var self = this;
-  self.manifests = {};
+  self.chooserOptions = {};
   self.display = {};
   var query = $location.search();
 
@@ -43,16 +43,12 @@ function factory(
         .then(function(params) {
           // get acceptable payment methods
           var request = params.paymentRequest;
-          var acceptable = jsonld.getValues(request, 'acceptablePayment');
-          acceptable = _.map(acceptable, function(e) {
-            return e.paymentMethod;
-          });
-          // get matching payment apps
+          // get matching methods and payment apps
           var matches = wpioPaymentAppService.match({
-            paymentMethods: acceptable
+            paymentRequest: request
           });
           // show app chooser
-          self.manifests = matches;
+          self.chooserOptions = matches;
           self.display.appChooser = true;
           $scope.$apply();
           return;

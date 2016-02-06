@@ -1,4 +1,4 @@
-define([], function() {
+define(['bignumber.js'], function(BigNumber) {
 
 'use strict';
 
@@ -7,7 +7,7 @@ function factory() {
   return {
     restrict: 'E',
     scope: {
-      apps: '=?wpioAppChooserApps',
+      options: '=?wpioAppChooserOptions',
       callback: '&wpioAppChooserCallback'
     },
     controller: function() {},
@@ -18,6 +18,22 @@ function factory() {
   };
 
   function Link(scope, element, attrs, ctrl) {
+    // TODO: need to use $watch if we want to handle dynamic changes
+    // find cheapest price
+    for(var id in ctrl.options) {
+      var min = null;
+      var acceptablePayment = ctrl.options[id].acceptablePayment;
+      for(var i = 0; i < acceptablePayment.length; ++i) {
+        // FIXME: currently ignores currency
+        var paymentAmount = acceptablePayment[i].transfer;
+        var amount = new BigNumber(paymentAmount.amount);
+        if(!min || amount.compareTo(min) < 0) {
+          min = amount;
+          ctrl.options[id].min = paymentAmount;
+        }
+      }
+    }
+
     ctrl.selected = null;
     ctrl.select = function(manifest) {
       ctrl.selected = manifest.id;

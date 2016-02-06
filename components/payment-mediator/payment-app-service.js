@@ -27,25 +27,36 @@ function factory() {
    * Gets all app manifests that match the given options.
    *
    * @param options the options to use:
-   *          paymentMethods the payment methods to match.
+   *          paymentRequest the payment request to match.
    *
-   * @return a map of matching app manifests, keyed by ID.
+   * @return a map of matching acceptable payment and app manifests, keyed by
+   *           app ID.
    */
   service.match = function(options) {
     options = options || {};
-    if(!options.paymentMethods || !angular.isArray(options.paymentMethods)) {
-      throw new Error('options.paymentMethods must be an array.');
+    if(!options.paymentRequest || !angular.isObject(options.paymentRequest)) {
+      throw new Error('options.paymentRequest must be an object.');
     }
 
+    // get acceptable payment
+    var acceptable = jsonld.getValues(
+      options.paymentRequest, 'acceptablePayment');
+
     // return all manifests whose supported payment methods intersect with
-    // the given payment methods
+    // the acceptable payment methods
     var manifests = storage.getAll();
     var matches = {};
     for(var id in manifests) {
       var manifest = manifests[id];
       var supported = jsonld.getValues(manifest, 'supportedPaymentMethod');
-      if(_.intersection(options.paymentMethods, supported).length > 0) {
-        matches[manifest.id] = manifest;
+      var intersection = _.filter(acceptable, function(x) {
+        return supported.indexOf(x.paymentMethod) !== -1;
+      });
+      if(intersection.length > 0) {
+        matches[manifest.id] = {
+          manifest: manifest,
+          acceptablePayment: intersection
+        };
       }
     }
     return matches;
