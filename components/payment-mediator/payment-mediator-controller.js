@@ -7,6 +7,7 @@ function factory(
   $location, $scope,
   wpioPaymentAppService, wpioFlowService, brAlertService) {
   var self = this;
+  self.paymentRequest = null;
   self.chooserOptions = {};
   self.display = {};
   var query = $location.search();
@@ -48,6 +49,7 @@ function factory(
             paymentRequest: request
           });
           // show app chooser
+          self.paymentRequest = request;
           self.chooserOptions = matches;
           self.display.appChooser = true;
           $scope.$apply();

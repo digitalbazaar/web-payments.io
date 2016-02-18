@@ -188,10 +188,7 @@ function factory($window, wpioPaymentAppService) {
       var router = new Router(options.route, options.origin);
 
       // build params to send from message data
-      var params = {};
-      params.options = {};
-      params.options.request = message.data;
-      return router.send(message.op, params);
+      return router.send(message.op, message.data.paymentRequest);
     }
 
     // payment mediator sending to RP...

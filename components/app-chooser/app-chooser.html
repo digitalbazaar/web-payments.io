@@ -4,6 +4,9 @@
       br-title="{{'Select a Payment App'}}"
       br-loading="ctrl.loading" br-options="{menu:false}"></br-headline>
     <hr/>
+    <h4>
+      Description: {{ctrl.paymentRequest.description}}
+    </h4>
     <ul ng-hide="ctrl.loading" class="list-unstyled">
       <li class="br-item-hover well" ng-repeat="(id, options) in ctrl.options"
         ng-click="ctrl.select(options.manifest)">

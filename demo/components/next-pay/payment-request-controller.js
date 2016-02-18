@@ -32,7 +32,7 @@ function factory($scope, brAlertService) {
         paymentMethod: 'https://w3id.org/payment-methods#Visa',
         status: 'authorized',
         approvalCode: '10025AB',
-        transfer: {
+        paymentAmount: {
           amount: '4.35',
           currency: 'USD'
         }

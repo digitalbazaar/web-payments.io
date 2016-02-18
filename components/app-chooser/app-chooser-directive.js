@@ -7,6 +7,7 @@ function factory() {
   return {
     restrict: 'E',
     scope: {
+      paymentRequest: '=?wpioAppChooserPaymentRequest',
       options: '=?wpioAppChooserOptions',
       callback: '&wpioAppChooserCallback'
     },
@@ -25,7 +26,7 @@ function factory() {
       var acceptablePayment = ctrl.options[id].acceptablePayment;
       for(var i = 0; i < acceptablePayment.length; ++i) {
         // FIXME: currently ignores currency
-        var paymentAmount = acceptablePayment[i].transfer;
+        var paymentAmount = acceptablePayment[i].paymentAmount;
         var amount = new BigNumber(paymentAmount.amount);
         if(!min || amount.compareTo(min) < 0) {
           min = amount;

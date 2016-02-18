@@ -12,6 +12,7 @@ function factory($scope, brAlertService) {
   navigator.payment.getPendingRequest({
     agentUrl: '/mediator'
   }).then(function(request) {
+    console.log('request', request);
     self.request = request;
   }).catch(function(err) {
     brAlertService.add('error', err);
@@ -25,24 +26,16 @@ function factory($scope, brAlertService) {
 
     // demo acknowledgement from spec
     var acknowledgement = {
-      '@context': 'https://w3id.org/web-payments/v1',
       type: 'PaymentAcknowledgement',
       description: self.request.description,
       payment: {
         paymentMethod: 'https://w3id.org/payment-methods#Visa',
         status: 'authorized',
         approvalCode: '10025AB',
-        transfer: {
+        paymentAmount: {
           amount: '4.35',
           currency: 'USD'
         }
-      },
-      signature: {
-        type: 'LinkedDataSignature2015',
-        creator: 'https://payment-service-provider.example.com/keys/12',
-        created: '2015-09-23T20:23:15Z',
-        nonce: '239807882930744352',
-        signatureValue: 'm4NTIyZTOGQzNGVkMzVkZ...OWM32NjIgoYzI43Q3ODIy='
       }
     };
 

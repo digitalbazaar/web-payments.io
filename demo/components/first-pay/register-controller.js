@@ -13,7 +13,6 @@ function factory($scope, $location, brAlertService) {
     var url = $location.absUrl();
     url = url.substr(0, url.length - '/register'.length);
     navigator.payment.registerApp({
-      '@context': 'https://w3id.org/web-payments/v1',
       id: url,
       type: 'PaymentApp',
       name: 'FirstPay',
