@@ -1,0 +1,15 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.3
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:lodash:20180130':
+    - bedrock-requirejs > bower-requirejs > lodash:
+        patched: '2018-12-24T21:01:03.463Z'
+  'npm:minimatch:20160620':
+    - bedrock-requirejs > bower-requirejs > file-utils > minimatch:
+        patched: '2018-12-24T21:01:03.463Z'
+    - bedrock-requirejs > bower-requirejs > file-utils > glob > minimatch:
+        patched: '2018-12-24T21:01:03.463Z'
+    - bedrock-requirejs > bower-requirejs > file-utils > findup-sync > glob > minimatch:
+        patched: '2018-12-24T21:01:03.463Z'
